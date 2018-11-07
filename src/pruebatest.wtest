@@ -1,0 +1,34 @@
+import remeras.*
+import surcursales.*
+
+
+describe"remera"{
+
+const remeraLisa = new Remeralisas (talle = 35,colorOtros= true,colorBasico = false )
+const remerasub = new RemerasSublimadas(talle = 44,colorOtros= true,colorBasico = false,alto = 0,ancho = 0,autorPide = 0 )
+const remeraBo = new RemerasBordadas(talle = 40,colorOtros= false,colorBasico = true,coloresUtilizados = 2 )
+
+const cliente1 = new Pedido(remera=remerasub,cantidad=5,derechoDeAutor = 0,factura = 0)
+
+const surcursal1 = new Surcursal
+	(remerasQueVende = ["Lisas","Sublimadas"], descApartirDe  = 2, lugar ="Avellaneda", pedido = cliente1, convenio = false )
+	
+var registro = new Registro(surcursales = [])
+
+test "testX" {
+
+	assert.equals(110,remeraLisa.costo())
+	assert.equals(100,remerasub.costo())
+	assert.equals(120,remeraBo.costo())
+	
+	assert.equals(500,surcursal1.precio())
+	
+	registro.agregarPedido(cliente1)
+	assert.notThat(registro.pedidoshechos().isEmpty())
+	assert.equals(500,registro.facturado())
+	
+	
+
+}
+
+}
