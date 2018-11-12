@@ -4,7 +4,7 @@ class Surcursal {
 	
 	const remerasQueVende = []
 	const descApartirDe  = 0
-	const lugar = null
+	const property lugar = null
 	var property pedido = null
 	const convenio = null
 	var property listaDeVentas = []
@@ -50,3 +50,20 @@ class Pedido{
 	
 	
 }
+
+class Pedido2{
+	
+	const property remeraModelo
+	const property cantRemeras
+	const surcrusal
+	
+	method precioBase() = remeraModelo.costo() * cantRemeras
+	
+	method precio() = if(self.aplicaAlDescuento()) self.precioBase() - self.Descuento()
+					  else self.precioBase()
+	
+	method descuento() = self.precioBase() * (remeraModelo.porcentajeDescuento())
+	
+	method aplicarDescuento() = cantRemeras >= sucursal.
+	
+	}

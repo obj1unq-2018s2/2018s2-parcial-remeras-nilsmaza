@@ -27,7 +27,6 @@ test "testX" {
 	assert.notThat(registro.pedidoshechos().isEmpty())
 	assert.equals(500,registro.facturado())
 	
-	
 
 }
 
