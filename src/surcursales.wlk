@@ -39,6 +39,27 @@ class Registro inherits Surcursal{
 //	method facturado() = surcursales.sum{elem => elem.vendio()}
 	
 }
+object comercio{
+	
+	const property surcursales = #{} 
+	
+	method registrarPedido(pedido) = pedido.surcursal().registraPedido(pedido) ///
+	
+	// method registrarPedidos(pedido) = pedidosRecibidos.add(new Pedido(remeraModelo = modelo))
+	
+	method totalFacturado() = surcursales.sum({pedido => pedido.precio()})
+	
+	method pedidos() = surcursales.flatMap{sur => sur.pedidos()}
+	
+	method totalFacturado2() = self.pedidos().sum{ pedido => pedido.precio() }
+	
+	method pedidosRemerasColor(color) = surcursales.count{sur => sur.modeloRemera()} 
+	
+}
+
+
+
+
 
 class Pedido{
 	
@@ -51,19 +72,19 @@ class Pedido{
 	
 }
 
-class Pedido2{
+class Pedido2{ //
 	
 	const property remeraModelo
 	const property cantRemeras
-	const surcrusal
+	const sucursal
 	
 	method precioBase() = remeraModelo.costo() * cantRemeras
 	
-	method precio() = if(self.aplicaAlDescuento()) self.precioBase() - self.Descuento()
+	method precio() = if(self.aplicarDescuento()) self.precioBase() - self.descuento()
 					  else self.precioBase()
 	
 	method descuento() = self.precioBase() * (remeraModelo.porcentajeDescuento())
 	
-	method aplicarDescuento() = cantRemeras >= sucursal.
+	method aplicarDescuento() = cantRemeras >= sucursal
 	
 	}
